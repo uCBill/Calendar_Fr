@@ -1,6 +1,6 @@
 /*
 Calendar_Fr
-Version 1.0.0
+Version 1.0.1
 https://github.com/uCBill/Calendar_Fr
 French Calendar watchface by Bill Eichner
 French format starting with Lundi (Monday, US) as first day of the week.
@@ -44,10 +44,13 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
     mth = currentTime.Month;
     yr = currentTime.Year + 1970;
     display.setFont(&Teko_Regular12pt7b);
+    
+        textstring = currentTime.Day;
+        textstring += "/";
 
         if (mth >= 12) {
         days = 31;
-        textstring = "DECEMBRE";
+        textstring += "DECEMBRE";
         if (yr <= 2020) {
         frame = -140;//Mar
         }
@@ -114,7 +117,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         }
         else if (mth >= 11) {
         days = 30;
-        textstring = "NOVEMBRE";
+        textstring += "NOVEMBRE";
         if (yr <= 2020) {
         frame = 1;//Dim
         }
@@ -181,7 +184,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         }
         else if (mth >= 10) {
         days = 31;
-        textstring = "OCTOBRE";
+        textstring += "OCTOBRE";
         if (yr <= 2020) {
         frame = -84;//Jeu
         }
@@ -248,7 +251,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         }
         else if (mth >= 9) {
         days = 30;
-        textstring = "SEPTEMBRE";
+        textstring += "SEPTEMBRE";
         if (yr <= 2020) {
         frame = -140;//Mar
         }
@@ -315,7 +318,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         }
         else if (mth >= 8) {
         days = 31;
-        textstring = "AOUT";
+        textstring += "AOUT";
         if (yr <= 2020) {
         frame = -28;//Sam
         }
@@ -382,7 +385,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         }
         else if (mth >= 7) {
         days = 31;
-        textstring = "JUILLET";
+        textstring += "JUILLET";
         if (yr <= 2020) {
         frame = -112;//Mer
         }
@@ -449,7 +452,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         }
         else if (mth >= 6) {
         days = 30;
-        textstring = "JUIN";
+        textstring += "JUIN";
         if (yr <= 2020) {
         frame = -168;//Lun
         }
@@ -516,7 +519,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         }
         else if (mth >= 5) {
         days = 31;
-        textstring = "MAI";
+        textstring += "MAI";
         if (yr <= 2020) {
         frame = -56;//Ven
         }
@@ -583,7 +586,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         }
         else if (mth >= 4) {
         days = 30;
-        textstring = "AVRIL";
+        textstring += "AVRIL";
         if (yr <= 2020) {
         frame = -112;//Mer
         }
@@ -650,7 +653,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         }
         else if (mth >= 3) {
         days = 31;
-        textstring = "MARS";
+        textstring += "MARS";
         if (yr <= 2020) {
         frame = 1;//Dim
         }
@@ -716,7 +719,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         }
         }
         else if (mth >= 2) {
-        textstring = "FEVRIER";
+        textstring += "FEVRIER";
         if (yr <= 2020) {
         days = 29;
         frame = -28;//Sam
@@ -804,7 +807,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         }
         else if (mth >= 1) {
         days = 31;
-        textstring = "JANVIER";
+        textstring += "JANVIER";
         if (yr <= 2020) {
         frame =  -112;//Mer
         }
@@ -885,9 +888,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         display.drawBitmap(frame, 58, calendar28n, 367, 142, light ? GxEPD_BLACK : GxEPD_WHITE);
         }
 
-    textstring += " ";
-    textstring += currentTime.Day;
-    textstring += ", ";
+    textstring += "/";
     textstring += currentTime.Year + 1970;
 
     display.getTextBounds(textstring, 0, 0, &x1, &y1, &w, &h);
@@ -1057,10 +1058,10 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
         //END highlight calendar day
   
 /*      //draw day hightlight image
-      x = 27;//Lun:x=-1, Mar:x=27, Mer:x=55, Jeu:x=84, Ven:x=112, Sam:x=140, Dim:x=168
+      x = 27;//Lun:x=-1, Mar:x=27, Mer:x=55, Jeu:x=83, Ven:x=112, Sam:x=140, Dim:x=168
       y = 140;//R1:y=56, R2:y=84, R3:y=112, R4:y=140, R5:y=168
       display.drawBitmap(x,y, block34x34, 35, 34, GxEPD_BLACK);
-      x = 83;//Wed:x=83
+      x = 83;//Jeu:x=83
       y = 140;//R1:y=56, R2:y=84, R3:y=112, R4:y=140, R5:y=168
       display.drawBitmap(x,y, block35x34, 35, 34, GxEPD_BLACK);
       //END highlight calendar day

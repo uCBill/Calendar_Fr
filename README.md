@@ -3,6 +3,9 @@
 https://github.com/uCBill/Calendar_Fr/
 French Calendar WatchFace for Watchy by Bill Eichner
 
+Version 1.0.1
+Updated Date format to Day/Month/Year
+
 Version 1.0.0
 French Calendar Watchface
 French format starting with Lundi (Monday, US) as first day of the week.
